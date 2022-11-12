@@ -1,0 +1,33 @@
+
+
+#getCountry{
+    background-color: rgba(0, 0, 0, 0.4);
+    height:30%; 
+    position: fixed;
+    width: 100%;
+    display: none;
+}
+
+
+#taskbar{
+    background:rgba(0, 0, 0, 0.4);
+    height: 300%;
+    width: 5%;
+    margin-top: -15px;
+    position: absolute;
+    right: 0;
+}
+
+#taskbar a{
+    float: left;
+  text-align: center;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 15px;
+}
+
+#logo{
+    height: 80px;
+    width: 80px;
+}
+
