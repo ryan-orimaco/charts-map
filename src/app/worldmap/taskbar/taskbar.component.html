@@ -3,25 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src=".\charts-map\src\app\api\spotify-token.service.ts"></script>
+    <link rel="stylesheet" href="./taskbar.component.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="vniewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
 </head>
 <!--This gets the taskbar-->
 <div id = "taskbar"> 
-   
-    <img src="../assets/biglogo.svg" title="logo" id="logo">
-    <br>
-    <button type="button" id="spotifyCharts">Spotify</button><br><br><br>
-    <button type="button" id="appleCharts">Apple</button><br><br><br>
-    <a href="#home">Compare Songs</a><br><br><br>
-   <a href="#home">Settings</a><br><br><br>
+    <a href="http://localhost:4200/worldmap" id="clickImage"><img src="../assets/biglogo.svg" title="logo" id="logo"></a>
+    <button type="button" id="spotifyCharts">Spotify</button>
+    <button type="button" id="appleCharts">Apple</button>
+    <button type="button" id="compareSongs">Compare</button> <!--This will be the compare spotify button-->
+    <button type="button" id="compareSongsApple" style="display: none;">Compare</button> <!--This will be the compare Apple button-->
+    <a id="loginPage" href = "https://accounts.spotify.com/authorize?client_id=f1ed8afa158d4c53a228bc20b80cb33e&redirect_uri=http://localhost:4200/worldmap&scope=user-read-currently-playing%20user-top-read%20user-modify-playback-state&response_type=token&show_dialog=true" id = "signInButton" style="display: none;"> Sign in with Spotify! </a>
 </div>
 
 <!--This will get the spotify taskchart-->
-<div id="getCountry">
-    <h1 id = "charts">Country Name</h1>
-    <p id = "songNames">Change</p>
+<table id="getCountry">
+    <!--This is the X button-->
+    <span id="closeButton">X</span>
+    <h1 id = "charts">getCountry</h1>     
+    <tr id = "songNames1">
+        <p id = "songNames1" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames2">
+        <p id = "songNames2" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames3">
+        <p id = "songNames3" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames4">
+        <p id = "songNames4" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames5"> 
+        <p id = "songNames5" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames6">
+        <p id = "songNames6" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames7">
+        <p id = "songNames7" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames8">
+        <p id = "songNames8" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames9">
+        <p id = "songNames9" style="display: inline;"></p><br>
+    </tr>
+    <tr id = "songNames10" >
+        <p id = "songNames10" style="display: inline;"></p><br>
+    </tr>
+</table>
+
+<!--Now this will make the div for the song with data of the song-->
+<div id="playSong">
+    <h1 id="particularSong"> Hello World</h1>
+    <iframe id = "embedSong" src="" width="100%" height="50%" frameBorder="0" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" ></iframe>
 </div>
 
+<!--Now using this data the creation of the comparison of charts can take place-->
+<div id="comparisonOfSong">
+    <span id="closeButton2">X</span>
+    <h3>Song Comparison</h3>
+
+    <!--Create the First Song-->
+    <div id="firstSong">
+       <h4 id="firstSongCountry">Number one song in: India</h4>
+       <ul>
+        <li id="song">Song Name: </li>
+        <li id="artist">Artist: </li>
+        <li id="album">Album: </li>
+        <li id="genre">Genre: </li>
+        <li id="yearrelease">Year of Release: </li>
+        <iframe style="border-radius:12px" src="" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy" id="CurrentSong" style="display: none;"></iframe>
+        </ul>
+    </div>
+
+    <div id="secondSong">
+        <h4 id="secondSongCountry">Number one song in: India</h4>
+        <ul>
+         <li id="lastSong">Song Name: </li>
+         <li id="lastArtist">Artist: </li>
+         <li id="lastAlbum" style="display: none;">Album: </li>
+         <li id="lastGenre" style="display: none;">Genre: </li>
+         <li id="lastRelease">Year of Release: </li>
+         <iframe style="border-radius:12px" src="" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" id="PreviousSong" style="display: none;"></iframe>
+         </ul>
+     </div>
+</div>
 </html>

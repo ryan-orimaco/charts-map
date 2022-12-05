@@ -6,15 +6,18 @@ import { AppComponent } from './app.component';
 import { WorldmapComponent } from './worldmap/worldmap.component';
 import { TaskbarComponent } from './worldmap/taskbar/taskbar.component';
 
+//import { spotifyService } from './api/spotify-token.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     WorldmapComponent,
-    TaskbarComponent
+    TaskbarComponent,
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
