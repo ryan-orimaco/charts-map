@@ -20,6 +20,6 @@ import { TaskbarComponent } from './worldmap/taskbar/taskbar.component';
     AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, WorldmapComponent, TaskbarComponent]
 })
 export class AppModule { }
