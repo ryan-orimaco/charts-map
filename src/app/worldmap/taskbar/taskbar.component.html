@@ -58,14 +58,14 @@
 
 <!--Now this will make the div for the song with data of the song-->
 <div id="playSong">
-    <h1 id="particularSong"> Hello World</h1>
-    <iframe id = "embedSong" src="" width="100%" height="50%" frameBorder="0" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" ></iframe>
+    <h1 id="particularSong" > Hello World</h1>
+    <iframe id = "embedSong" src="" width="100%" height="80%" frameBorder="0" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" ></iframe>
 </div>
 
 <!--Now using this data the creation of the comparison of charts can take place-->
 <div id="comparisonOfSong">
+    <h3 style="display:inline;">Song Comparison</h3>
     <span id="closeButton2">X</span>
-    <h3>Song Comparison</h3>
 
     <!--Create the First Song-->
     <div id="firstSong">
@@ -76,7 +76,7 @@
         <li id="album">Album: </li>
         <li id="genre">Genre: </li>
         <li id="yearrelease">Year of Release: </li>
-        <iframe style="border-radius:12px" src="" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy" id="CurrentSong" style="display: none;"></iframe>
+        <iframe style="border-radius:12px" src="" width="110.5%" height="100%" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy" id="CurrentSong" style="display: none;  overflow: hidden;"></iframe>
         </ul>
     </div>
 
@@ -88,7 +88,7 @@
          <li id="lastAlbum" style="display: none;">Album: </li>
          <li id="lastGenre" style="display: none;">Genre: </li>
          <li id="lastRelease">Year of Release: </li>
-         <iframe style="border-radius:12px" src="" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" id="PreviousSong" style="display: none;"></iframe>
+         <iframe style="border-radius:12px;" src="" width="110%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" id="PreviousSong" style="overflow: hidden;"></iframe>
          </ul>
      </div>
 </div>

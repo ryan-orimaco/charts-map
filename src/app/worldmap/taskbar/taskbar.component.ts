@@ -61,7 +61,8 @@ export class TaskbarComponent implements OnInit {
           var countryName = $(this).attr("title");
           var country = String(countryName);
           $( "#charts" ).text("Top 10 Charts in: " + country).css("fontSize", "30px");
-          var findString = await spotifyApi.getCountry(country);
+          var findString : string[];
+          findString = await spotifyApi.getCountry(country);
           $( "#songNames1 p" ).text("1. " + findString[0]).css("fontSize", "15px");
           $( "#songNames2 p" ).text("2. " + findString[1]).css("fontSize", "15px");
           $( "#songNames3 p" ).text("3. " + findString[2]).css("fontSize", "15px");
@@ -197,16 +198,21 @@ export class TaskbarComponent implements OnInit {
         var firstCountry : any;
         var secondCountry : any;
 
+          /*Create some precomposites when showing songs */
           $("#comparisonOfSong").show(); 
           $("#album").show();
           $("#CurrentSong").show();
           $("#PreviousSong").show();
-          $("#genre").hide();
-          $("#getCountry").hide();
+          $("#genre").hide(); //Because the get genre feature in spotify cannot be access we decided to get the Album and song
+          $("#getCountry").hide(); //Ensures getting country hides
+          $("#playSong").hide();
+          
                     
           //If the user clicks on the first country map it will go to a particular country.
           $("#firstSong").on("click", function(event){
             $.get('../assets/countryNames.txt',  function(data) {
+              $("#getCountry").hide();
+              $("#playSong").hide();
                var myvar = data;
               $(myvar).css("fill", "yellow");
               $(myvar).on("click", async function(){
@@ -214,6 +220,7 @@ export class TaskbarComponent implements OnInit {
                 country1 = String(firstCountry);
                  findString = await spotifyApi.findCountry(country1);
                 $( "#firstSongCountry" ).text("Number One Song in: " + findString[0]).css("fontSize", "15px");
+                $("#getCountry").hide();
                 $( "#song" ).text(findString[1]);
                 $( "#artist" ).text(findString[2]);
                 $( "#album" ).text(findString[3]);
@@ -269,38 +276,37 @@ export class TaskbarComponent implements OnInit {
         //Now get the data
         var getData = data;
         $(getData).css("fill", "red");
-       
+        $(getData).css("cursor", "pointer");
 
          //Now we can use this to have an ability to hover over countries
-        $(getData).on("click", async function(){
+        $(getData).on("click", async function(event){
           var countryName = $(this).attr("title");
           const country = String(countryName)
-          var countryId = $(this).attr("id");
           var name = $("#charts").text(country)
+          var countryId = $(this).attr("id");
           $(name).css("fontSize", "12px !important;")
-          iTunesCharts = await appleApi.fetchCharts(String(countryId));    
-
-
-              $( "#songNames1" ).text("1. " + iTunesCharts[0]).css("fontSize", "15px");
-              $( "#songNames2" ).text("2. " + iTunesCharts[1]).css("fontSize", "15px");
-              $( "#songNames3" ).text("3. " + iTunesCharts[2]).css("fontSize", "15px");
-              $( "#songNames4" ).text("4. " + iTunesCharts[3]).css("fontSize", "15px");
-              $( "#songNames5" ).text("5. " + iTunesCharts[4]).css("fontSize", "15px");
-              $( "#songNames6" ).text("6. " + iTunesCharts[5]).css("fontSize", "15px");
-              $( "#songNames7" ).text("7. " + iTunesCharts[6]).css("fontSize", "15px");
-              $( "#songNames8" ).text("8. " + iTunesCharts[7]).css("fontSize", "15px");
-              $( "#songNames9" ).text("9. " + iTunesCharts[8]).css("fontSize", "15px");
-              $( "#songNames10" ).text("10. " + iTunesCharts[9]).css("fontSize", "15px");
+          TaskbarComponent.showCountry();
             
           
           $.getJSON(`https://itunes.apple.com/${countryId}/rss/topsongs/limit=10/json`, function(data) 
           {
             for(var i = 0; i < 10; i++){
              iTunesURL[i] = (data.feed.entry[i].id.label);
+             iTunesCharts[i]= (data.feed.entry[i]["im:name"].label + "\n");
+              
+             $( "#songNames1" ).text("1. " + iTunesCharts[0]).css("fontSize", "15px");
+             $( "#songNames2" ).text("2. " + iTunesCharts[1]).css("fontSize", "15px");
+             $( "#songNames3" ).text("3. " + iTunesCharts[2]).css("fontSize", "15px");
+             $( "#songNames4" ).text("4. " + iTunesCharts[3]).css("fontSize", "15px");
+             $( "#songNames5" ).text("5. " + iTunesCharts[4]).css("fontSize", "15px");
+             $( "#songNames6" ).text("6. " + iTunesCharts[5]).css("fontSize", "15px");
+             $( "#songNames7" ).text("7. " + iTunesCharts[6]).css("fontSize", "15px");
+             $( "#songNames8" ).text("8. " + iTunesCharts[7]).css("fontSize", "15px");
+             $( "#songNames9" ).text("9. " + iTunesCharts[8]).css("fontSize", "15px");
+             $( "#songNames10" ).text("10. " + iTunesCharts[9]).css("fontSize", "15px");
             }
             finaliTunesCharts = iTunesCharts.join("")
           });
-          TaskbarComponent.showCountry();
       })
 
       $("#songNames1").on("click", function(){
@@ -309,6 +315,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[0].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[0]).css("fontSize", "20px");
       })
 
       $("#songNames2").on("click", function(){
@@ -317,6 +324,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[1].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[1]).css("fontSize", "20px");
       })
 
       $("#songNames3").on("click", function(){
@@ -325,6 +333,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[2].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[2]).css("fontSize", "20px");
       })
 
       $("#songNames4").on("click", function(){
@@ -333,6 +342,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[3].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[3]).css("fontSize", "20px");
       })
 
       $("#songNames5").on("click", function(){
@@ -341,6 +351,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[4].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[4]).css("fontSize", "20px");
       })
 
       $("#songNames6").on("click", function(){
@@ -349,6 +360,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[5].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[5]).css("fontSize", "20px");
       })
 
       $("#songNames7").on("click", function(){
@@ -357,6 +369,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[6].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[6]).css("fontSize", "20px");
       })
 
       $("#songNames8").on("click", function(){
@@ -365,6 +378,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[7].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[7]).css("fontSize", "20px");
       })
 
       $("#songNames9").on("click", function(){
@@ -373,6 +387,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[8].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[8]).css("fontSize", "20px");
       })
 
       $("#songNames10").on("click", function(){
@@ -381,6 +396,7 @@ export class TaskbarComponent implements OnInit {
         var idOfSong = iTunesURL[9].replace("https://", "https://embed.")
         var embedtheSong = idOfSong
         $("#embedSong").attr("src", embedtheSong)
+        $( "#particularSong" ).text(iTunesCharts[9]).css("fontSize", "20px");
       })
 
       $("#closeButton").on("click", function(){
@@ -404,18 +420,23 @@ export class TaskbarComponent implements OnInit {
         //This ensures getCharts disappears
         $("#getCountry").hide();
 
+        //Ensures playSong disappears
+
         $("#comparisonOfSong").show(); //This will show the charts list
         $("#firstSong").on("click", function(){
           $.get('../assets/itunes.txt', function(data){
             //Now get the data
             var getData = data;
             $(getData).css("fill", "orange");
+            $("#getCountry").hide();
 
             //Now clicking on a country is the next option
             $(getData).on("click",function(){
+              $("#playSong").hide();
               var countryName = $(this).attr("title");
               const country = String(countryName)
               var countryId = $(this).attr("id");
+              $("#getCountry").hide();
             $.getJSON(`https://itunes.apple.com/${countryId}/rss/topsongs/limit=10/json`, (data) => 
             {  
               //Let's get put the data into an array

@@ -26,6 +26,7 @@ const getplaylist = await spotifyCharts.playlists.getPlaylistItems(findID);
  for(let i = 0; i < 10; i++){
     songID[i] = (getplaylist.items[i].track.id)
     songCharts[i] = (getplaylist.items[i].track.name); 
+    console.log(getplaylist.items[i]);
   } 
    return songCharts;
 }
@@ -57,6 +58,7 @@ async function findCountry(findCountry : string) : Promise<string[]> {
      return artistFind;
   }
 
+  
 
 export default{getCountry, songID, findCountry, getArtist}
 

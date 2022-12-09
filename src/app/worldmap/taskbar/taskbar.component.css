@@ -108,18 +108,19 @@
 }
 
 #firstSong{
-    background-color: aliceblue;
-    position: fixed;
-    height: 85.8%;
-    width: 15%;
+    background-color: #ffffff;
+    position: relative;
+    height: 43%;
+    width: 100%;
+    border-radius: 15px;
 }
 
 #secondSong{
-    background-color: blue;
-    position: fixed;
-    height: 85.8%;
-    width: 15%;
-    right: 80px;
+    background-color: rgba(255, 255, 0, 0.539);
+    position: absolute;
+    height: 43%;
+    width: 100%;
+    border-radius: 15px;
     display: none;
 }
 
@@ -139,6 +140,14 @@
 
 #CurrentSong{
     overflow: hidden;
+    position: relative;
+    left: -40px;
+}
+
+#PreviousSong{
+    overflow: hidden;
+    position: relative;
+    left: -40px;
 }
 /*Create the X button */
 #closeButton{
@@ -149,11 +158,12 @@
     cursor: pointer;
 }
 
-#closeButton2b{
+#closeButton2{
     font-size: 20px;
     font-weight: bold;
     position: fixed;
     right: 6%;
+    cursor: pointer;
 }
 
 #getCountry tr:nth-child(even){
