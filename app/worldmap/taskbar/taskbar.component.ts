@@ -53,7 +53,7 @@ export class TaskbarComponent implements OnInit {
       $("#signInButton").show();
 
       //Gets the country names
-     $.get('../assets/countryNames.txt', function(data) {
+     $.get('dist/charts-map/src/assets/countryNames.txt', function(data) {
         var myvar = data;
         $(myvar).css("fill", "white");
         $(myvar).css("cursor", "pointer");
@@ -272,7 +272,7 @@ export class TaskbarComponent implements OnInit {
       $("#compareSongsApple").show();
 
       //Get the query
-      $.get('../assets/itunes.txt', function(data){
+      $.get('dist/charts-map/src/assets/itunes.txt', function(data){
         //Now get the data
         var getData = data;
         $(getData).css("fill", "red");
