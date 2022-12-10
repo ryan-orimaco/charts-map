@@ -1,0 +1,195 @@
+@import url('https://fonts.google.com/specimen/Zen+Dots');
+
+#getCountry{
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    height:50%; 
+    position: fixed;
+    width: 30%;
+    display: none;
+    top: 300px;
+    right: 80px;
+    animation: colorChange 0.3s;
+    font-family: 'Zen Dots', sans-serif;
+    font-size: 20px;
+}
+
+#playSong{
+    position: fixed;
+    display: none;
+    top: 50px;
+    right: 80px;
+}
+
+
+#taskbar{
+    background:rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 5%;
+    margin-top: -15px;
+    border-radius: 10px 10px 10px 10px;
+    position: absolute;
+    right: 0;
+}
+
+#taskbar a{
+    float: left;
+  text-align: center;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 15px;
+}
+
+#logo{
+    height: 80px;
+    width: 80px;
+}
+
+
+#charts{
+    font-size: 20px !important;
+}
+
+/*Creating the buttons*/
+#spotifyCharts{
+    background-color: green;
+    height: 50px;
+    width: 72px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+#appleCharts{
+    background-color: red;
+    height: 50px;
+    width: 72px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+
+#compareSongs{
+    background-color: blue;
+    height: 50px;
+    width: 72px;
+    display: none;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+#compareSongsApple{
+    background-color: orangered;
+    height: 50px;
+    width: 72px;
+    display: none;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+
+#signInButton{
+    background-color: yellowgreen;
+    position: fixed;
+    bottom: 20px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+/*This will now be used to create the comparison charts */
+#comparisonOfSong{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    border-radius: 15px;
+    height:95%; 
+    width: 30%;
+    right: 80px;
+    text-align: center;
+    display: none;
+}
+
+#firstSong{
+    background-color: #ffffff;
+    position: relative;
+    height: 43%;
+    width: 100%;
+    border-radius: 15px;
+}
+
+#secondSong{
+    background-color: rgba(255, 255, 0, 0.539);
+    position: absolute;
+    height: 43%;
+    width: 100%;
+    border-radius: 15px;
+    display: none;
+}
+
+/**Now we can use this to gather info about the song that we have decided to do**/
+#playSong{
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 30%;
+    height: 35%;
+    border-radius: 15px;
+}
+
+#particularSong, #songInfo{
+    text-align: center;
+    font-family: 'Zen Dots', sans-serif;
+    font-weight: bolder;
+}
+
+#CurrentSong{
+    overflow: hidden;
+    position: relative;
+    left: -40px;
+}
+
+#PreviousSong{
+    overflow: hidden;
+    position: relative;
+    left: -40px;
+}
+/*Create the X button */
+#closeButton{
+    font-size: 20px;
+    font-weight: bolder;
+    position: fixed;
+    right: 6%;
+    cursor: pointer;
+}
+
+#closeButton2{
+    font-size: 20px;
+    font-weight: bold;
+    position: fixed;
+    right: 6%;
+    cursor: pointer;
+}
+
+#getCountry tr:nth-child(even){
+    background-color: gray;
+}
+
+#getCountry tr:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+/**Creating a cool design for the Top 10 Charts**/
+@keyframes colorChange{
+    0%{
+        background-color:  grey;
+    }
+
+    25%{
+        background-color:   grey;
+    }
+
+    50%{
+        background-color:   grey;
+    }
+
+    100%{
+        background-color: rgb(58, 57, 57);
+    }
+}
