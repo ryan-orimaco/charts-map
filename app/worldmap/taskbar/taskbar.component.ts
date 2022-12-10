@@ -53,7 +53,7 @@ export class TaskbarComponent implements OnInit {
       $("#signInButton").show();
 
       //Gets the country names
-     $.get('dist/charts-map/src/assets/countryNames.txt', function(data) {
+     $.get('/assets/countryNames.txt', function(data) {
         var myvar = data;
         $(myvar).css("fill", "white");
         $(myvar).css("cursor", "pointer");
@@ -210,7 +210,7 @@ export class TaskbarComponent implements OnInit {
                     
           //If the user clicks on the first country map it will go to a particular country.
           $("#firstSong").on("click", function(event){
-            $.get('../assets/countryNames.txt',  function(data) {
+            $.get('/assets/countryNames.txt',  function(data) {
               $("#getCountry").hide();
               $("#playSong").hide();
                var myvar = data;
@@ -272,7 +272,7 @@ export class TaskbarComponent implements OnInit {
       $("#compareSongsApple").show();
 
       //Get the query
-      $.get('dist/charts-map/src/assets/itunes.txt', function(data){
+      $.get('/assets/itunes.txt', function(data){
         //Now get the data
         var getData = data;
         $(getData).css("fill", "red");
@@ -424,7 +424,7 @@ export class TaskbarComponent implements OnInit {
 
         $("#comparisonOfSong").show(); //This will show the charts list
         $("#firstSong").on("click", function(){
-          $.get('../assets/itunes.txt', function(data){
+          $.get('/assets/itunes.txt', function(data){
             //Now get the data
             var getData = data;
             $(getData).css("fill", "orange");
