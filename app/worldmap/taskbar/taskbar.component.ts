@@ -51,7 +51,6 @@ export class TaskbarComponent implements OnInit {
       //At the same time the Compare Button Will appear
       $("#compareSongs").show();
       $("#signInButton").show();
-
       //Gets the country names
      $.get('assets/countryNames.txt', function(data) {
         var myvar = data;
